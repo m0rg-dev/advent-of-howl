@@ -1,0 +1,24 @@
+static fn i32 Main() throws IOException {
+    let LineReader r = IO.stdinLineReader();
+    let i64 count = 0;
+    let Option<i64> previous = Option::<i64>.none();
+    while true {
+        let Option<String> line = r.read();
+        
+        if !line.isSome() {
+            IO.println(String.from(count));
+            return 0;
+        }
+
+        let i64 this_line = line.unwrap().toInt().unwrap();
+        if previous.isSome() {
+            if previous.unwrap() < this_line {
+                count = count + 1;
+            }
+        }
+
+        previous = Option::<i64>.some(this_line);
+    }
+
+    return 0;
+}

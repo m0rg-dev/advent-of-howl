@@ -1,0 +1,33 @@
+static fn i64 window_sum(Vec<i64> source, i64 start_index) {
+    return source[start_index] + source[start_index + 1] + source[start_index + 2];
+}
+
+static fn i32 Main() throws IOException {
+    let LineReader r = IO.stdinLineReader();
+    let Vec lines = new Vec<i64>();
+    while true {
+        let Option<String> line = r.read();
+        
+        if !line.isSome() {
+            break;
+        }
+
+        lines.push(line.unwrap().toInt().unwrap());
+    }
+
+    let i64 previous = window_sum(lines, 0);
+    let i64 i = 1;
+    let i64 count = 0;
+    while i < lines.length() - 2 {
+        let i64 curr = window_sum(lines, i);
+        if previous < curr {
+            count = count + 1;
+        }
+        previous = curr;
+        i = i + 1;
+    }
+
+    IO.println(String.from(count));
+
+    return 0;
+}
