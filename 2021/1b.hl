@@ -4,7 +4,7 @@ static fn i64 window_sum(Vec<i64> source, i64 start_index) {
 
 static fn i32 Main() throws IOException {
     let LineReader r = IO.stdinLineReader();
-    let Vec lines = new Vec<i64>();
+    let Vec<i64> lines = new Vec();
     while true {
         let Option<String> line = r.read();
         

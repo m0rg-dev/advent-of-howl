@@ -1,7 +1,7 @@
 static fn i32 Main() throws IOException {
     let LineReader r = IO.stdinLineReader();
     let i64 count = 0;
-    let Option<i64> previous = Option::<i64>.none();
+    let Option<i64> previous = Option.none();
     while true {
         let Option<String> line = r.read();
         
